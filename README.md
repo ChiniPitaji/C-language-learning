@@ -667,3 +667,295 @@ In this module, you learned:
 
 
 
+Welcome to **Module 4** of your C language journey! 🎯
+This module focuses on **decision control**, where programs make logical choices and execute different actions based on conditions.
+
+---
+
+## 🧠 Topics Covered
+
+### 1. What is Decision Control?
+
+**Decision Control** allows a program to make choices and decide which instructions to execute based on certain conditions.
+
+#### ✳️ Key Purposes
+
+| Purpose                   | Description                                                    |
+| ------------------------- | -------------------------------------------------------------- |
+| **Conditional Execution** | Executes certain code only when a condition is true.           |
+| **Handles Complexity**    | Helps manage large programs by controlling flow logically.     |
+| **Enhances Flexibility**  | Enables programs to react to different situations dynamically. |
+
+Example:
+
+```c
+if (marks >= 40)
+    printf("Pass");
+else
+    printf("Fail");
+```
+
+---
+
+### 2. Relational Operators
+
+Used to compare two values or expressions.
+
+| Operator | Meaning                  | Example  | Result (if a=5, b=10) |
+| -------- | ------------------------ | -------- | --------------------- |
+| `==`     | Equal to                 | `a == b` | 0 (false)             |
+| `!=`     | Not equal to             | `a != b` | 1 (true)              |
+| `>`      | Greater than             | `a > b`  | 0 (false)             |
+| `<`      | Less than                | `a < b`  | 1 (true)              |
+| `>=`     | Greater than or equal to | `a >= b` | 0 (false)             |
+| `<=`     | Less than or equal to    | `a <= b` | 1 (true)              |
+
+These operators return **1 (true)** or **0 (false)**.
+
+---
+
+### 3. `if` Statement
+
+The simplest form of decision control.
+
+Syntax:
+
+```c
+if (condition) {
+    // code executes if condition is true
+}
+```
+
+Example:
+
+```c
+int age = 20;
+if (age >= 18) {
+    printf("You are eligible to vote.\n");
+}
+```
+
+---
+
+### 4. Truthy vs Falsy
+
+In C, conditions are evaluated as **true (non-zero)** or **false (zero)**.
+
+| Value                                  | Meaning |
+| -------------------------------------- | ------- |
+| `0`                                    | False   |
+| Non-zero values (like `1`, `-2`, etc.) | True    |
+
+Example:
+
+```c
+if (5) printf("True");   // Executes
+if (0) printf("False");  // Skipped
+```
+
+---
+
+### 5. `if-else` Statement
+
+Used to execute one block when the condition is true, and another when false.
+
+```c
+int marks = 75;
+if (marks >= 40) {
+    printf("Pass");
+} else {
+    printf("Fail");
+}
+```
+
+---
+
+### 6. `if-else if` Ladder
+
+Used when there are **multiple conditions** to check sequentially.
+
+```c
+if (marks >= 90)
+    printf("Grade A");
+else if (marks >= 75)
+    printf("Grade B");
+else if (marks >= 50)
+    printf("Grade C");
+else
+    printf("Fail");
+```
+
+🔹 The program checks conditions one by one from top to bottom.
+
+---
+
+### 7. Nested `if` Statement
+
+You can place one `if` statement inside another to check multiple dependent conditions.
+
+```c
+if (age >= 18) {
+    if (citizen == 1)
+        printf("Eligible to vote");
+    else
+        printf("Not a citizen");
+} else {
+    printf("Underage");
+}
+```
+
+💡 **Use nesting carefully** — too many nested conditions reduce readability.
+
+---
+
+### 8. Logical Operators
+
+Logical operators combine multiple conditions into one.
+
+| Operator | Meaning     | Example            | Result (a=5, b=10)           |         |   |         |                            |
+| -------- | ----------- | ------------------ | ---------------------------- | ------- | - | ------- | -------------------------- |
+| `&&`     | Logical AND | `(a < b && b > 0)` | True if both conditions true |         |   |         |                            |
+| `        |             | `                  | Logical OR                   | `(a > b |   | b > 0)` | True if any condition true |
+| `!`      | Logical NOT | `!(a == b)`        | True if condition is false   |         |   |         |                            |
+
+Example:
+
+```c
+if (age >= 18 && citizen == 1)
+    printf("You can vote.");
+```
+
+---
+
+### 9. Ternary Operator
+
+A shorthand version of the `if-else` statement.
+
+Syntax:
+
+```c
+condition ? expression_if_true : expression_if_false;
+```
+
+Example:
+
+```c
+int age = 20;
+printf("%s", (age >= 18) ? "Adult" : "Minor");
+```
+
+✅ Best used for short, simple conditional checks.
+
+---
+
+### 10. `switch` Statement
+
+The `switch` statement tests a variable against multiple possible values (called **cases**).
+
+Syntax:
+
+```c
+switch (expression) {
+    case value1:
+        // code block
+        break;
+    case value2:
+        // code block
+        break;
+    default:
+        // code block
+}
+```
+
+Example:
+
+```c
+int choice = 2;
+switch (choice) {
+    case 1:
+        printf("Start\n");
+        break;
+    case 2:
+        printf("Stop\n");
+        break;
+    default:
+        printf("Invalid choice\n");
+}
+```
+
+💡 **break** prevents execution from falling through the next case.
+
+---
+
+### 11. `switch` vs `if-else`
+
+| Feature               | `switch`                                  | `if-else`                                              |
+| --------------------- | ----------------------------------------- | ------------------------------------------------------ |
+| **Type of Condition** | Works with discrete values (int, char)    | Works with any condition (ranges, logical expressions) |
+| **Readability**       | Clear and structured for multiple choices | Becomes complex with many conditions                   |
+| **Use Case**          | Menu-driven programs, limited options     | Complex logical conditions                             |
+| **Execution Flow**    | Jumps to matching case                    | Checks each condition in order                         |
+
+Example:
+
+* Use `switch` for menu selection.
+* Use `if-else` for numeric or logical comparisons.
+
+---
+
+### 12. `goto` Statement
+
+Used to **transfer control** to a labeled part of the program.
+
+Syntax:
+
+```c
+goto label;
+...
+label:
+    // code here
+```
+
+Example:
+
+```c
+int i = 1;
+start:
+if (i <= 5) {
+    printf("%d ", i);
+    i++;
+    goto start;
+}
+```
+
+Output:
+
+```
+1 2 3 4 5
+```
+
+#### ⚠️ Drawbacks of `goto`
+
+| Drawback                | Explanation                            |
+| ----------------------- | -------------------------------------- |
+| **Reduces Readability** | Makes code harder to understand.       |
+| **Difficult Debugging** | Hard to trace jumps in large programs. |
+| **Not Structured**      | Breaks structured programming flow.    |
+
+💡 **Avoid using `goto`** unless absolutely necessary (e.g., breaking nested loops).
+
+---
+
+### ✅ Summary
+
+In this module, you learned:
+
+* How decision control helps handle conditional execution
+* Relational, logical, and ternary operators
+* `if`, `if-else`, nested, and ladder conditions
+* `switch` and its difference from `if-else`
+* The use and drawbacks of `goto`
+
+---
+
+
